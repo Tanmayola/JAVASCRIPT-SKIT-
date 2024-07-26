@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Write Boxes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .box {
+            background-color: #fff;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 10px;
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <textarea id="inputBox" class="input-box" rows="10"></textarea>
+    </div>
+    <div class="box">
+        <textarea id="outputBox" class="input-box" rows="10" readonly></textarea>
+    </div>
+
+    <script>
+        const inputBox = document.getElementById('inputBox');
+        const outputBox = document.getElementById('outputBox');
+
+        inputBox.addEventListener('input', () => {
+            outputBox.innerHTML = inputBox.value;
+        });
+
+    </script>
+</body>
+</html>

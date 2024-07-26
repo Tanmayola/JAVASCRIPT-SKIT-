@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+    //       console.log("i am 1")
+    //       console.log("i am 2")
+    //       console.log("i am 3")
+    //         setTimeout(()=>{
+    //       for(let i=0 ;i<10000;i++){
+    //       console.log(i)
+    //   }
+    // },2000)
+    //   console.log("i am 4")
+    //   console.log("i am 5")
+    // call back --> promise
+    //call back--> call back hell -----> promises -----> promise chain ------>async
+    function food(dish,order){
+        setTimeout(()=>{
+            console.log(dish);
+            if(order){
+                order();
+            }
+        },2000);
+    }
+    food("Pizza",()=>{
+        food("burger",()=>{
+            food("Patties",()=>{
+                food("cold drink")
+            });
+        });
+    });
+    </script>
+  </body>
+</html>

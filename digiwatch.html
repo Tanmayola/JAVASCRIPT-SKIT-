@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .watch {
+        width: 200px;
+        height: 100px;
+        background-color: #333;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .display {
+        font-size: 48px;
+        color: #fff;
+      }
+
+      #hours,
+      #minutes,
+      #seconds {
+        font-size: 48px;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="watch">
+      <div class="display">
+        <span id="hours">00</span>
+        <span id="minutes">:00</span>
+        <span id="seconds">:00</span>
+      </div>
+    </div>
+
+    <script>
+      const hoursElement = document.getElementById("hours");
+      const minutesElement = document.getElementById("minutes");
+      const secondsElement = document.getElementById("seconds");
+
+      function updateWatch() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        hoursElement.textContent = hours.toString().padStart(2, "0");
+        minutesElement.textContent = minutes.toString().padStart(2, "0");
+        secondsElement.textContent = seconds.toString().padStart(2, "0");
+      }
+
+      setInterval(updateWatch, 1000);
+    </script>
+  </body>
+</html>

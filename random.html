@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button type="submit">Generate</button>
+    <script>
+        document.querySelector("button").onclick = function(){
+           let color= document.querySelector("input").value =`${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}`;
+            document.querySelector("input").value =color;
+            document.body.style.backgroundColor = `rgb(${color})`
+        }
+         let i= 0
+         setInterval(()=>{
+            let color= document.querySelector("input").value =`${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}`;
+            document.querySelector("input").value =color;
+            document.body.style.backgroundColor = `rgb(${color})`
+            // document.write(i)
+            // i++
+         },10000)
+    </script>
+</body>
+</html>

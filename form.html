@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input {
+            margin: auto;
+            width: 45%;
+            padding: 40px;
+            box-shadow: 0px 0px 10px whitesmoke;
+        }
+        input {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #btn {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <input type="text" class="inp" id="name" placeholder="Enter your name">
+        <input type="text" class="inp" id="email" placeholder="Enter your email">
+        <input type="text" class="inp" id="age" placeholder="Enter your age">
+        <input type="text" class="inp" id="text1" placeholder="Enter text 1">
+        <input type="text" class="inp" id="text2" placeholder="Enter text 2">
+        <input type="text" class="inp" id="text3" placeholder="Enter text 3">
+        <button id="btn">Submit</button>
+    </div>
+
+    <script>
+        document.querySelector('button').onclick= function(){
+            console.log("it's done by JS")
+        }
+        // document.getElementById("btn").onclick=function(){
+        //     let val=document.getElementsByClassName("inp");
+        //     // for(let i =1;i<val.length;i++){
+        //     //     console.log(val[i].value);
+        //     // }
+        //     console.log(val)
+        //     for(let i of val){
+        //         console.log(i.value);
+        //     }
+        // }
+
+        document.querySelector("button").onclick= function(){
+            let a = document.querySelector("input");
+            for(let i of a){
+                console.log(i.value)
+            }
+        }
+
+        </script>
+
+    <!-- <script>
+        document.getElementById("btn").onclick = function() {
+            const inputs = document.querySelectorAll('.input input[type="text"]');
+            inputs.forEach(input => {
+                let val = input.value;
+                input.value = '';
+                input.focus();
+                console.log(val);
+            });
+        }
+    </script> -->
+</body>
+</html>
