@@ -3,9 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .box {
+            width: 300px;
+            box-shadow: 0px 0px 10px rgb(156, 155, 155);
+            margin: 5px;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        img {
+            width: 100%;
+        }
+        button {
+            padding: 15px;
+            width: 45%;
+            margin: 10px 5px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search {
+            text-align: center;
+            position: relative;
+            margin: 40px 0;
+        }
+        input {
+            width: 70%;
+            padding: 14px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            width: 150px;
+            margin: 0;
+            position: absolute;
+            border-radius: 0 5px 5px 0;
+            top: 0;
+            right: -200px;
+        }
+        .cart {
+            display: inline-block;
+            position: relative;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 14px;
+        }
+        i {
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search Your Products">
+        <button class="btn" onclick="searchProducts()">Search</button>
+        <div class="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
+    <div id="container"></div>
+    <script>
+        let products = [];
+        let cartCount = 0;
+
+        async function FetchData() {
+            try {
+                let response = await fetch('https://dummyjson.com/products');
+                let jsonData = await response.json();
+                products = jsonData.products;
+                displayProducts(products);
+            } catch (error) {
+                console.error("Data fetch failed", error);
+            }
+        }
+
+        function displayProducts(productList) {
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+            productList.forEach(product => {
+                let div = document.createElement('div');
+                div.className = 'box';
+
+                let image = document.createElement('img');
+                image.src = product.thumbnail;
+
+                let title = document.createElement('h3');
+                title.textContent = product.title;
+
+                let price = document.createElement('h4');
+                price.textContent = $${product.price};
+
+                let description = document.createElement('p');
+                description.textContent = product.description.slice(0, 80);
+
+                let addCartButton = document.createElement('button');
+                addCartButton.textContent = 'Add To Cart';
+                addCartButton.onclick = () => addToCart();
+
+                let buyNowButton = document.createElement('button');
+                buyNowButton.textContent = 'Buy Now';
+
+                div.append(image, title, price, description, addCartButton, buyNowButton);
+                container.appendChild(div);
+            });
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.title.toLowerCase().includes(query) ||
+                product.description.toLowerCase().includes(query)
+            );
+            displayProducts(filteredProducts);
+        }
+
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cartCount').textContent = cartCount;
+        }
+
+        FetchData();
+    </script>
 </body>
 </html>

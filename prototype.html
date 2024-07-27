@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //  let obj={
+        //     output(){
+        //         console.log("hi")
+        //     },
+        //     abc(){
+        //         console.log("i am abc")
+        //     }
+        //  }
+        //  obj.output()
+        //  obj.abc()
+        //  obj.xyz()
+        //  console.log(obj.toString())
+        //  let a =[10,20,30,40,50,60];
+        //  console.log(a);
+         let obj1={
+            output(){
+                console.log("hello I am show function")
+            }
+         };
+         let obj2={
+            show(){
+                console.log("I am show")
+            }
+         };
+         console.log(obj1)
+         obj1.__proto__ = obj2;
+         obj1.output()
+         obj1.show()
+    </script>
+
+
+</body>
+</html>
